@@ -1,5 +1,7 @@
 #sudo: required
 
+language: generic
+
 services:
         - docker
 
@@ -8,5 +10,5 @@ before_install:
         - docker build -t mytravisci -f Dockerfile.dev .
 
 script:
-        - docker run mytravisci npm run test -- --coverage
+        - docker run -e CI=true mytravisci npm run test -- --coverage
 
